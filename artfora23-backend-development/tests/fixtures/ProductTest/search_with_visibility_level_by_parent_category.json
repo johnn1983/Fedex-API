@@ -1,0 +1,168 @@
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "price": 1000,
+            "user_id": 1,
+            "category_id": 3,
+            "title": "First",
+            "author": "Picasso",
+            "slug": "first",
+            "tags": "First, Picasso, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": true,
+            "visibility_level": 0,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-20T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z",
+            "category": {
+                "id": 3,
+                "title": "children #1",
+                "parent_id": 2,
+                "created_at": "2016-10-20T11:05:00.000000Z",
+                "updated_at": "2016-10-20T11:05:00.000000Z",
+                "parent": {
+                    "id": 2,
+                    "title": "parent category",
+                    "parent_id": null,
+                    "created_at": "2016-10-20T11:05:00.000000Z",
+                    "updated_at": "2016-10-20T11:05:00.000000Z"
+                }
+            }
+        },
+        {
+            "id": 4,
+            "price": 700,
+            "user_id": 2,
+            "category_id": 4,
+            "title": "Fourth",
+            "author": "Aivazovkiy",
+            "slug": "fourth",
+            "tags": "Fourth, Aivazovkiy, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": false,
+            "visibility_level": 0,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-23T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z",
+            "category": {
+                "id": 4,
+                "title": "children #2",
+                "parent_id": 2,
+                "created_at": "2016-10-20T11:05:00.000000Z",
+                "updated_at": "2016-10-20T11:05:00.000000Z",
+                "parent": {
+                    "id": 2,
+                    "title": "parent category",
+                    "parent_id": null,
+                    "created_at": "2016-10-20T11:05:00.000000Z",
+                    "updated_at": "2016-10-20T11:05:00.000000Z"
+                }
+            }
+        },
+        {
+            "id": 12,
+            "price": 0,
+            "user_id": 2,
+            "category_id": 3,
+            "title": "Twelfth",
+            "author": "Picasso",
+            "slug": "twelfth",
+            "tags": "Twelfth, Picasso, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": false,
+            "visibility_level": 1,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-30T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z",
+            "category": {
+                "id": 3,
+                "title": "children #1",
+                "parent_id": 2,
+                "created_at": "2016-10-20T11:05:00.000000Z",
+                "updated_at": "2016-10-20T11:05:00.000000Z",
+                "parent": {
+                    "id": 2,
+                    "title": "parent category",
+                    "parent_id": null,
+                    "created_at": "2016-10-20T11:05:00.000000Z",
+                    "updated_at": "2016-10-20T11:05:00.000000Z"
+                }
+            }
+        },
+        {
+            "id": 13,
+            "price": 0,
+            "user_id": 2,
+            "category_id": 3,
+            "title": "Thirteenth",
+            "author": "Picasso",
+            "slug": "thirteenth",
+            "tags": "Thirteenth, Picasso, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": false,
+            "visibility_level": 2,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-31T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z",
+            "category": {
+                "id": 3,
+                "title": "children #1",
+                "parent_id": 2,
+                "created_at": "2016-10-20T11:05:00.000000Z",
+                "updated_at": "2016-10-20T11:05:00.000000Z",
+                "parent": {
+                    "id": 2,
+                    "title": "parent category",
+                    "parent_id": null,
+                    "created_at": "2016-10-20T11:05:00.000000Z",
+                    "updated_at": "2016-10-20T11:05:00.000000Z"
+                }
+            }
+        }
+    ],
+    "first_page_url": "http:\/\/localhost\/products?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http:\/\/localhost\/products?page=1",
+    "links": [
+        {
+            "url": null,
+            "label": "&laquo; Previous",
+            "active": false
+        },
+        {
+            "url": "http:\/\/localhost\/products?page=1",
+            "label": "1",
+            "active": true
+        },
+        {
+            "url": null,
+            "label": "Next &raquo;",
+            "active": false
+        }
+    ],
+    "next_page_url": null,
+    "path": "http:\/\/localhost\/products",
+    "per_page": 10,
+    "prev_page_url": null,
+    "to": 4,
+    "total": 4
+}

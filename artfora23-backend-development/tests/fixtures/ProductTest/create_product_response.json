@@ -1,0 +1,42 @@
+{
+    "id": 15,
+    "price": 11000,
+    "user_id": 3,
+    "category_id": 3,
+    "title": "New product",
+    "author": "KG\/AM",
+    "slug": "new-product",
+    "tags": "some, tag, because, why, not",
+    "description": "lorem ipsum well you know",
+    "is_ai_safe": true,
+    "visibility_level": 2,
+    "width": 100,
+    "height": 200,
+    "weight": 0.15,
+    "status": "Pending",
+    "deleted_at": null,
+    "created_at": "2018-11-11T11:11:11.000000Z",
+    "updated_at": "2018-11-11T11:11:11.000000Z",
+    "media": [
+        {
+            "id": 1,
+            "created_at": "2016-10-20T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z",
+            "deleted_at": null,
+            "link": "http:\/\/localhost\/test.jpg",
+            "name": "Product main photo",
+            "is_public": true,
+            "owner_id": 1
+        },
+        {
+            "id": 2,
+            "created_at": "2016-10-20T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z",
+            "deleted_at": null,
+            "link": "http:\/\/localhost\/test1.jpg",
+            "name": "Category Photo photo",
+            "is_public": false,
+            "owner_id": 1
+        }
+    ]
+}

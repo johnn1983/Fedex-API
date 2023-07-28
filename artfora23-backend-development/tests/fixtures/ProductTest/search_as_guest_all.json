@@ -1,0 +1,112 @@
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "price": 1000,
+            "user_id": 1,
+            "category_id": 3,
+            "title": "First",
+            "author": "Picasso",
+            "slug": "first",
+            "tags": "First, Picasso, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": true,
+            "visibility_level": 0,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-20T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z"
+        },
+        {
+            "id": 4,
+            "price": 700,
+            "user_id": 2,
+            "category_id": 4,
+            "title": "Fourth",
+            "author": "Aivazovkiy",
+            "slug": "fourth",
+            "tags": "Fourth, Aivazovkiy, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": false,
+            "visibility_level": 0,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-23T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z"
+        },
+        {
+            "id": 7,
+            "price": 400,
+            "user_id": 1,
+            "category_id": 1,
+            "title": "Seventh",
+            "author": "Shishkin",
+            "slug": "seventh",
+            "tags": "Seventh, Shishkin, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": false,
+            "visibility_level": 0,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-26T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z"
+        },
+        {
+            "id": 10,
+            "price": 100,
+            "user_id": 2,
+            "category_id": 1,
+            "title": "Tenth",
+            "author": "Vasnetsov",
+            "slug": "tenth",
+            "tags": "Tenth, Vasnetsov, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": true,
+            "visibility_level": 0,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-29T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z"
+        }
+    ],
+    "first_page_url": "http:\/\/localhost\/products?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http:\/\/localhost\/products?page=1",
+    "links": [
+        {
+            "url": null,
+            "label": "&laquo; Previous",
+            "active": false
+        },
+        {
+            "url": "http:\/\/localhost\/products?page=1",
+            "label": "1",
+            "active": true
+        },
+        {
+            "url": null,
+            "label": "Next &raquo;",
+            "active": false
+        }
+    ],
+    "next_page_url": null,
+    "path": "http:\/\/localhost\/products",
+    "per_page": 4,
+    "prev_page_url": null,
+    "to": 4,
+    "total": 4
+}

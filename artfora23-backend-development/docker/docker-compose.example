@@ -1,0 +1,53 @@
+version: '3.9'
+services:
+  ${short_branch}-${CI_PROJECT_NAME}:
+    image: ${CI_REGISTRY_IMAGE}:${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}
+    volumes:
+      - ${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}:/app/
+      - ${short_branch}-pv-storage:/home/storage
+      - ${short_branch}-pv-logs:/home/logs 
+    container_name: ${short_branch}-${CI_PROJECT_NAME}
+    restart: on-failure
+    networks:
+      - artfora
+  nginx:
+    container_name: nginx
+    image: nginx:1.20.1
+    volumes:
+      - /root/nginx/conf.d/:/etc/nginx/conf.d/
+      - /root/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt/:/etc/letsencrypt
+      - /home/dev-artfora-backend:/home/${short_branch}/${short_branch}-${CI_PROJECT_NAME}
+      - ${short_branch}-pv-storage:/home/storage
+      - ${short_branch}-pv-logs:/home/logs 
+      - /var/log/nginx:/var/log/nginx
+    ports:
+      - 443:443
+      - 80:80
+    networks:
+      - artfora
+    depends_on:
+      - ${short_branch}-${CI_PROJECT_NAME}
+    restart: on-failure
+    depends_on:
+      - ${short_branch}-${CI_PROJECT_NAME}
+    restart: on-failure
+
+networks:
+  artfora:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.12.0/24
+    name: artfora
+
+
+
+volumes:
+ ${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}:
+   external: true
+ ${short_branch}-pv-storage:
+   external: true
+ ${short_branch}-pv-logs:
+   external: true

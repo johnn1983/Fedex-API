@@ -1,0 +1,14 @@
+{
+    "title": "New product",
+    "media": [ 1, 2 ],
+    "category_id": 3,
+    "author": "KG/AM",
+    "description": "lorem ipsum well you know",
+    "is_ai_safe": true,
+    "tags": "some, tag, because, why, not",
+    "visibility_level": 2,
+    "price": 11000,
+    "width": 100,
+    "height": 200,
+    "weight": 0.15
+}

@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  api:
+      image: ronasit/php-nginx-dev:8.0
+      container_name: artfora-api
+      working_dir: /app
+      ports:
+          - 80:80
+          - 443:443
+      volumes:
+          - ./:/app
+      links:
+        - pgsql
+        - pgsql_test
+      environment:
+          WEB_DOCUMENT_ROOT: /app/public
+          WEB_DOCUMENT_INDEX: index.php
+          REDIS_PORT: "6379"
+          XDEBUG_START_WITH_REQUEST: "yes"
+          XDEBUG_CLIENT_PORT: 9000
+          XDEBUG_CLIENT_HOST: host.docker.internal
+      networks:
+        - artfora
+
+  pgsql:
+    image: postgres:15rc2
+    container_name: artfora-pgsql
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: "pgpassword"
+      POSTGRES_USER: pguser
+      POSTGRES_DB: pgdb
+    volumes:
+      - .:/app
+    networks:
+      - artfora
+
+  pgsql_test:
+    image: postgres:15rc2
+    container_name: artfora-pgsql-test
+    ports:
+        - 5434:5432
+    environment:
+      POSTGRES_PASSWORD: "pgpassword"
+      POSTGRES_USER: pguser
+      POSTGRES_DB: pgdb
+    volumes:
+    - .:/app
+    command: ["-c", "fsync=off"]
+    networks:
+      - artfora
+
+  redis:
+    image: redis:4
+    container_name: artfora-redis
+    ports:
+      - 6379:6379
+    networks:
+      - artfora
+
+networks:
+  artfora:
+    external: true

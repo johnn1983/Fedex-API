@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+  php:
+    build: .
+    volumes:
+      - ./:/app/
+    restart: on-failure
+    networks:
+      - artfora
+  web-server:
+    container_name: artfora-nginx
+    image: nginx:1.20.1
+    volumes:
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+#      - /etc/letsencrypt/:/etc/letsencrypt
+      - ./:/app/
+    ports:
+      - 8081:80
+    restart: on-failure
+    depends_on:
+      - php
+    networks:
+      - artfora
+  db:
+    container_name: artfora-pgsql
+    image: postgres:15rc2
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    volumes:
+      - ./storage/pgsql:/var/lib/postgresql/data
+    networks:
+      - artfora
+networks:
+  artfora:
+    external: true

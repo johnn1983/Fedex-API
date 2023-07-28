@@ -1,0 +1,114 @@
+stages:
+  - build
+  - deploy
+#
+
+variables:
+  DOMAIN: dev.artfora.artel-workshop.com
+  CI_PROJECT_NAME: $CI_PROJECT_NAME
+  CI_COMMIT_SHORT_SHA: $CI_COMMIT_SHORT_SHA
+
+
+build:
+ stage: build
+ image: 
+   name: artelworkshop/alpine-kaniko1.9:latest
+   entrypoint: [""]
+ before_script:
+   - mkdir -p /kaniko/.docker
+   - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+
+ script:
+   - echo $CI_COMMIT_REF_NAME
+   - cat Dockerfile | envsubst > Dockerfile.exec
+   - cat Dockerfile.exec
+   - cat $env > .env
+   - cat .env
+   - >
+     executor
+     --use-new-run=true
+     --cleanup
+     --cache
+     --cache-dir=/tmp
+     --snapshotMode=redo
+     --context "${CI_PROJECT_DIR}"
+     --dockerfile "Dockerfile.exec"
+     --destination "${CI_REGISTRY_IMAGE}:${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}"
+
+ environment:
+   name: $CI_COMMIT_REF_NAME
+
+ only:
+   - staging
+   - development
+   - production
+ tags:
+   - docker-runner-artel
+   
+deploy:
+ stage: deploy
+ image: 
+   name: artelworkshop/alpine-kaniko1.9:latest
+ before_script:
+ ##for ini ssh
+    - eval $(ssh-agent -s)
+    - ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - echo "$ssh_priv_key" | tr -d '\r' | ssh-add -
+    - chmod 700 -R /root/.ssh/
+    - cat /root/.ssh/id_rsa
+# local init docker-compose
+    - apk update && apk add gettext docker docker-compose bash
+    - cat docker/docker-compose.example | envsubst > docker-compose.yml
+#remote commands
+    - docker -H "ssh://root@${host}" volume create --name="${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}"
+    - ssh root@${host} "mkdir -p /home/${short_branch}/docker-composes"
+    - ssh root@${host} "mkdir -p /home/${short_branch}/${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}"
+    - > 
+      docker -H "ssh://root@${host}" volume create --opt type=none --opt device=/home/${short_branch}/${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA} ${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA} --opt o=bind
+      ## if symlink exist delete them and recreate to build
+    - > 
+      ssh root@${host} ln -sfn /home/${short_branch}/${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA} /home/${short_branch}-${CI_PROJECT_NAME}
+    - > 
+      if [[ $(docker -H "ssh://root@${host}" volume ls | grep "${short_branch}-pv-storage" | wc -l) = 0 ]]; then 
+        docker -H "ssh://root@${host}" volume create --opt type=none --opt device=/home/${short_branch}/image-storage ${short_branch}-pv-storage --opt o=bind;
+      else 
+        echo "Volume ${short_branch}-pv-storage already has"
+      fi
+    - > 
+      if [[ $(docker -H "ssh://root@${host}" volume ls | grep "${short_branch}-pv-logs" | wc -l) = 0 ]]; then 
+        docker -H "ssh://root@${host}" volume create --opt type=none --opt device=/home/${short_branch}/logs ${short_branch}-pv-logs --opt o=bind;
+      else 
+        echo "Volume ${short_branch}-pv-logs already has"
+      fi
+    - docker -H "ssh://root@${host}" login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+ script:
+   # - docker exec ${short_branch}-${CI_PROJECT_NAME} /bin/bash -c "echo $env > /app/.env"
+   - cat docker-compose.yml
+   - scp docker-compose.yml root@${host}:/home/${short_branch}/docker-composes/
+   - scp -r docker/nginx root@${host}:/root/
+   - docker-compose -H "ssh://root@${host}" up -d
+   # - docker exec ${short_branch}-${CI_PROJECT_NAME} mv /app/vars /app/.env
+   - docker -H "ssh://root@${host}" exec ${short_branch}-${CI_PROJECT_NAME} php artisan migrate --force
+   - docker -H "ssh://root@${host}" exec ${short_branch}-${CI_PROJECT_NAME} ln -s /home/storage /app/storage/app
+ after_script:
+   - echo "--- clean old volumes ---"
+   - volume_list=$(docker -H "ssh://root@${host}" volume ls | grep "${short_branch}-${CI_PROJECT_NAME}" | grep -v ${CI_COMMIT_SHORT_SHA} | awk '{print $2}') && for item in ${volume_list//\\n\ }; do docker -H "ssh://root@${host}" volume rm $item; done
+   - > 
+     dir_list=$( ssh root@${host} "ls /home/${short_branch}/ | grep ${short_branch}-${CI_PROJECT_NAME} | grep -v ${CI_COMMIT_SHORT_SHA}") && 
+     for item in ${dir_list//\\n\ };
+     do  ssh root@${host} "rm -rf /home/${short_branch}/$item";
+     done
+   - echo "--- clean unused images ---"
+   - docker -H "ssh://root@${host}" system prune -a -f
+ #   - docker stop ${short_branch}-${CI_PROJECT_NAME} nginx && docker start ${short_branch}-${CI_PROJECT_NAME} nginx
+ environment:
+   name: $CI_COMMIT_REF_NAME
+ only:
+   - staging
+   - development
+   - production
+ tags:
+   - docker-runner-artel
+
+

@@ -1,0 +1,59 @@
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "username": "Gerhard Feest",
+            "tagname": "Gerhard Feest",
+            "email": "admin@example.com",
+            "phone": "1111111",
+            "role_id": 1,
+            "email_verification_token": null,
+            "email_verification_token_sent_at": null,
+            "description": "Lorem ipsum well you know",
+            "country": "USA",
+            "external_link": null,
+            "data": {
+                "media_filters": []
+            },
+            "background_image_id": null,
+            "avatar_image_id": null,
+            "created_at": "2016-10-20T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z",
+            "deleted_at": null,
+            "product_visibility_level": 0
+        },
+        {
+            "id": 2,
+            "username": "Alien West",
+            "tagname": "Alien West",
+            "email": "user@example.com",
+            "phone": "2222222",
+            "role_id": 2,
+            "email_verification_token": null,
+            "email_verification_token_sent_at": null,
+            "description": "Lorem ipsum well you know",
+            "country": "USA",
+            "external_link": null,
+            "data": {
+                "media_filters": []
+            },
+            "background_image_id": null,
+            "avatar_image_id": null,
+            "created_at": "2016-10-20T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z",
+            "deleted_at": null,
+            "product_visibility_level": 0
+        }
+    ],
+    "first_page_url": "http:\/\/localhost\/users?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http:\/\/localhost\/users?page=1",
+    "next_page_url": null,
+    "path": "http:\/\/localhost\/users",
+    "per_page": 2,
+    "prev_page_url": null,
+    "to": 2,
+    "total": 2
+}

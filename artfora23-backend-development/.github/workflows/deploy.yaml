@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - development
+
+env:
+  PATH_PROD: /home/dev/projects/artfora23-backend
+
+jobs:
+  deploy:
+    runs-on: dev23ArtforaBackend
+    name: Production
+    steps:
+      - name: Git       
+        working-directory: ${{env.PATH_PROD}}
+        run: |
+          git checkout -f
+          git pull --rebase deploy development
+      
+      - name: Install Dependencies       
+        working-directory: ${{env.PATH_PROD}}
+        run: docker-compose -f docker-compose.prod.yml exec -T php composer install --no-ansi --no-interaction --no-plugins --no-progress --optimize-autoloader
+
+      - name: Migrations up
+        working-directory: ${{env.PATH_PROD}}
+        run: docker-compose -f docker-compose.prod.yml exec -T php php artisan migrate -n

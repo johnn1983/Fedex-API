@@ -1,0 +1,22 @@
+{
+    "username": "Another User",
+    "tagname": "Another User",
+    "email": "createuser@example.com",
+    "phone": null,
+    "role_id": 2,
+    "email_verification_token": "123123123",
+    "email_verification_token_sent_at": "2018-11-11 11:11:11",
+    "description": "",
+    "country": "",
+    "external_link": null,
+    "product_visibility_level": 2,
+    "data": {
+        "media_filters": {
+            "page": 1,
+            "per_page": 10
+        }
+    },
+    "background_image_id": 1,
+    "avatar_image_id": 1,
+    "deleted_at": null
+}

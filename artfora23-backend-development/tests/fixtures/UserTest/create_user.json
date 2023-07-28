@@ -1,0 +1,10 @@
+{
+    "username": "Another User",
+    "tagname": "Another User",
+    "email": "createuser@example.com",
+    "role_id": 2,
+    "password": "123123",
+    "background_image_id": 1,
+    "avatar_image_id": 1,
+    "product_visibility_level": 2
+}

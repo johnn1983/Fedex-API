@@ -1,0 +1,82 @@
+{
+    "current_page": 2,
+    "data": [
+        {
+            "id": 7,
+            "price": 400,
+            "user_id": 1,
+            "category_id": 1,
+            "title": "Seventh",
+            "author": "Shishkin",
+            "slug": "seventh",
+            "tags": "Seventh, Shishkin, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": false,
+            "visibility_level": 0,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-26T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z"
+        },
+        {
+            "id": 10,
+            "price": 100,
+            "user_id": 2,
+            "category_id": 1,
+            "title": "Tenth",
+            "author": "Vasnetsov",
+            "slug": "tenth",
+            "tags": "Tenth, Vasnetsov, Some, Tags",
+            "description": "Lorem ipsum",
+            "is_ai_safe": true,
+            "visibility_level": 0,
+            "width": 100,
+            "height": 200,
+            "weight": 0.4,
+            "status": "Approved",
+            "deleted_at": null,
+            "created_at": "2016-10-29T11:05:00.000000Z",
+            "updated_at": "2016-10-20T11:05:00.000000Z"
+        }
+    ],
+    "first_page_url": "http:\/\/localhost\/products?page=1",
+    "from": 3,
+    "last_page": 3,
+    "last_page_url": "http:\/\/localhost\/products?page=3",
+    "links": [
+        {
+            "url": "http:\/\/localhost\/products?page=1",
+            "label": "&laquo; Previous",
+            "active": false
+        },
+        {
+            "url": "http:\/\/localhost\/products?page=1",
+            "label": "1",
+            "active": false
+        },
+        {
+            "url": "http:\/\/localhost\/products?page=2",
+            "label": "2",
+            "active": true
+        },
+        {
+            "url": "http:\/\/localhost\/products?page=3",
+            "label": "3",
+            "active": false
+        },
+        {
+            "url": "http:\/\/localhost\/products?page=3",
+            "label": "Next &raquo;",
+            "active": false
+        }
+    ],
+    "next_page_url": "http:\/\/localhost\/products?page=3",
+    "path": "http:\/\/localhost\/products",
+    "per_page": 2,
+    "prev_page_url": "http:\/\/localhost\/products?page=1",
+    "to": 4,
+    "total": 6
+}
