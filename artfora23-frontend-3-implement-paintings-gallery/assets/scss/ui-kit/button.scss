@@ -1,0 +1,30 @@
+@import '../variables';
+
+.button {
+  border-radius: 10px; padding: 0.5rem 1rem; font-size: 1.5rem; cursor: pointer; text-decoration: none;
+  text-transform: uppercase; font-family: Prozak, sans-serif; letter-spacing: 4px; color: $body-bg;
+  transition: opacity 0.3s;
+
+  &-default {
+    color: $button-default-font-color; background-color: $button-default-background-color;
+    border: solid 1px $box-border-color;
+  }
+
+  &-success { color: $button-success-font-color; background-color: $button-success-background-color; }
+
+  &-danger { color: $button-danger-font-color; background-color: $button-danger-background-color; }
+
+  &-info { color: $button-info-font-color; background-color: $button-info-background-color; }
+
+  &-warning { color: $button-warning-font-color; background-color: $button-warning-background-color; }
+
+  &-full-width { width: 100%; }
+
+  &-small { font-size: 1rem; width: 200px; }
+
+  &:hover { opacity: 0.7; }
+
+  &:active { opacity: 0.5; }
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}

@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+
+  ${short_branch}-${CI_PROJECT_NAME}:
+    container_name: ${short_branch}-${CI_PROJECT_NAME}
+    image: ${CI_REGISTRY_IMAGE}:${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}
+    restart: on-failure
+    ports:
+      - 3000
+    volumes:
+      - ${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}:/app/
+    networks:
+      - artfora
+
+networks:
+  artfora:
+    external:
+      name: artfora
+      
+volumes:
+ ${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}:
+   external: true

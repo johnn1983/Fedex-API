@@ -1,0 +1,14 @@
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+.vscode
+.idea
+dist
+dist-current
+sw.*
+/docker-compose.override.yml
+.DS_STore

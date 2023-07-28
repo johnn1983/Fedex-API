@@ -1,0 +1,12 @@
+@import '../variables';
+
+.ai-safe-description {
+  max-width: 350px;
+
+  @media (max-width: $mobile) {
+    max-width: 100%;
+  }
+
+  & ul { padding-left: 1rem; }
+  p { margin: 1rem auto;}
+}

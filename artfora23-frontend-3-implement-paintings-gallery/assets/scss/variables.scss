@@ -1,0 +1,84 @@
+// Body
+$body-bg: #3a3a39;
+$dark-bg: #262525;
+$light-bg: #c1c1c0;
+
+$box-content-font-color: #949495;
+
+$footer-background-color: #F0F0F0;
+$footer-border-color: silver;
+$footer-height: 1.8rem;
+
+$header-background-color: $body-bg;
+$header-height: 3rem;
+$header-logout-font-color: #999;
+
+$login-background-color: white;
+
+$sidebar-background-color: #223645;
+$sidebar-item-hover: #293846;
+$sidebar-width: 14rem;
+$sidebar-font-color: #a7b1c2;
+$sidebar-font-color-hover: #ffffff;
+$sidebar-background-color-hover: #2f4050;
+$sidebar-active-link-color: #19aa8d;
+$sidebar-toggle-width: 2rem;
+
+$font-color: #c1c1c1;
+
+$border-color: #a9a9a9;
+
+$button-default-font-color: $font-color;
+$button-default-background-color: #fff;
+
+$button-danger-font-color: #FFF;
+$button-danger-background-color: #ed5565;
+
+$button-success-font-color: #FFF;
+$button-success-background-color: #1ab394;
+
+$button-info-font-color: #FFF;
+$button-info-background-color: #1c84c6;
+
+$button-warning-font-color: #FFF;
+$button-warning-background-color: #f8ac59;
+
+$error-color: #d66558;
+
+$sidebar-font-color: #a7b1c2;
+
+$table-header-border-color: #d3d3d3;
+$table-row-border-color: #676a6c;
+
+$table-row-odd-background-color: #FFF;
+$table-row-even-background-color: #f7f7f7;
+
+$pagination-background-color: #fff;
+$pagination-active-link-background-color: #007bff;
+$pagination-active-link-font-color: #fff;
+$pagination-border-color: #ddd;
+
+$box-background-color: #fff;
+$box-border-color: #e7eaec;
+
+$mock-container-height: 342px;
+
+$transition-delay: .3s;
+
+$small: 576px;
+$mobile: 768px;
+$tablet: 992px;
+$laptop: 1200px;
+$large: 1600px;
+
+//$input-border-color: rgba(0,0,0, 0.2);
+$input-border-color: $light-bg;
+$selector-dropdown-shadow-color: #333;
+$selector-item-hover-color: #f9f9f9;
+
+$black: #000000;
+
+$user-details-background-color: #242424;
+$user-details-tag-font-color: #999999;
+
+$delete-image-icon-background: #d06454;

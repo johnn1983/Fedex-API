@@ -1,0 +1,30 @@
+@import '../variables';
+
+.ui-kit-search-filter {
+  position: relative; width: 100%; min-width: 100px; border-radius: 10px; background: $border-color; color: $header-background-color;
+  display: flex; justify-content: space-between; align-items: center; padding: 5px 10px; gap: 10px; cursor: pointer;
+
+  &-active {
+    border-radius: 10px 10px 0 0;
+  }
+
+  &-dropdown {
+    position: absolute; width: 100%; display: flex; flex-direction: column; top: 100%; left: 0;
+    margin: 0; list-style-type: none; padding: 0; background: $border-color; overflow: hidden; z-index: 10;
+    max-height: 200px; overflow: auto; border-radius: 0 0 10px 10px; border-top: 1px solid $dark-bg;
+
+    &-item {
+      cursor: pointer; padding: 5px 10px;
+
+      &:hover { background: $font-color}
+
+      &-active { background: white }
+    }
+  }
+
+    &-arrow {
+    transform: rotate(90deg); fill: $header-background-color;
+
+    &-open { transform: rotate(270deg) }
+  }
+}

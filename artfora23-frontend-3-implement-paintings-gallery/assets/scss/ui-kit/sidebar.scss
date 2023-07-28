@@ -1,0 +1,51 @@
+@import "../variables";
+
+.sidebar {
+  background-color: $sidebar-background-color; position: fixed; width: $sidebar-width;
+  left: 0; top: 0; transition: all $transition-delay; z-index: 10; bottom: $footer-height;
+
+  &-logo { padding: 20px 0; background-image: url(/images/logo.png);
+
+    &-image { margin: 0 auto; height: 100px; display: block; }
+  }
+
+  &-items-list { overflow-y: scroll; height: calc(100% - 100px); padding-bottom: 3rem; box-sizing: border-box;
+    &::-webkit-scrollbar { width: 5px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: #888; }
+    &::-webkit-scrollbar-thumb:hover { background: #555; }
+  }
+
+  &-link {
+    display: block; height: 1rem; color: $sidebar-font-color; padding: 1rem; text-decoration: none; font-size: 0.9rem;
+
+    &:hover { background-color: $sidebar-background-color-hover; color: $sidebar-font-color-hover; }
+  }
+
+  &-icon { padding-right: 0.5rem; }
+
+  &-title { font-weight: 700; }
+
+  &-checkbox { display: none; }
+
+  &-toggle { display: none; }
+
+  & .router-link-active { background-color: $sidebar-background-color-hover; border-left: 4px solid $sidebar-active-link-color; }
+
+  @media (max-width: $mobile) {
+    &-logo { display: none; }
+
+    &-toggle {
+      display: block; top: 0.8rem; left: $sidebar-width; position: fixed; font-size: 1.5rem;
+      cursor: pointer; z-index: 100; padding: 0 0.8rem; transition: all $transition-delay;
+    }
+
+    &-checkbox {
+      &:checked ~ .sidebar { left: -$sidebar-width; }
+
+      &:checked ~ .page { margin-left: 0; }
+
+      &:checked ~ .sidebar-toggle { left: 0; }
+    }
+  }
+}

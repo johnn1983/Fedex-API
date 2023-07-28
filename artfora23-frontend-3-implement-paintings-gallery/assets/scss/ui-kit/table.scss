@@ -1,0 +1,19 @@
+@import '../variables';
+
+.table {
+  &-header {
+    height: 1.5rem; font-weight: 700; border-bottom: solid; border-width: 1px; border-color: $table-header-border-color;
+    margin-top: 5px; padding: 0.25rem;
+  }
+
+  &-row {
+    height: 100%; padding: 0.5rem; border-bottom: 1px solid #e7eaec; cursor: pointer; color: $table-row-border-color;
+    text-align: left; min-height: 1rem;
+
+    &.even { background-color: $table-row-odd-background-color; }
+
+    &.odd { background-color: $table-row-even-background-color; }
+
+    &-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  }
+}

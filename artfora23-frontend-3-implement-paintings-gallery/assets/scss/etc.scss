@@ -1,0 +1,31 @@
+@import 'variables';
+
+.has-error { color: $error-color !important; }
+
+.image-upload {
+  &-container { background-color: #f3f3f4; cursor: pointer; }
+
+  &-error { margin-top: 1.6rem; text-align: right; color: $error-color; }
+}
+
+.croppa-container .icon-remove {display: none;}
+
+.loader-button {padding: 0.5rem 1rem; height: 32px;}
+
+.flex {
+  &-left { display: flex; gap: 1rem; align-items: center; justify-content: flex-start; }
+  &-right { display: flex; gap: 1rem; align-items: center; justify-content: flex-end; }
+  &-center { display: flex; gap: 1rem; align-items: center; justify-content: center; text-align: center; }
+  &-space-between { display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
+}
+
+.full-width { width: 100%; }
+.hidden { display: none; }
+
+.thumbnail { position: relative; width: 200px; height: 200px; overflow: hidden;
+  & img {
+    position: absolute; left: 50%; top: 50%; height: 100%; width: auto; -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%); transform: translate(-50%,-50%);
+  }
+  & img.portrait { width: 100%; height: auto; }
+}

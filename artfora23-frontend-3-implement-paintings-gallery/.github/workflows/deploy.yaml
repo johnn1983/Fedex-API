@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - development
+
+env:
+  PATH_PROD: /home/actions-runner/projects/artfora23-frontend
+
+jobs:
+  deploy:
+    runs-on: prod
+    name: Production
+    steps:
+      - name: Git       
+        working-directory: ${{env.PATH_PROD}}
+        run: |
+          git checkout -f development
+          git pull --rebase deploy development
+      
+      - name: Install dependencies and build
+        working-directory: ${{env.PATH_PROD}}
+        run: docker-compose up
+      
+      - name: Run on server new verison
+        working-directory: ${{env.PATH_PROD}}
+        run: |
+          cp -RfT ./.output/public ./dist
+          cp -RfT ./.output/public ./dist-current

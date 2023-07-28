@@ -1,0 +1,47 @@
+@import 'variables';
+
+html, body {
+  font-size: 16px;
+  margin: 0;
+  font-family: AtkinsonHyperlegible, sans-serif;
+  color: $font-color;
+  background: $body-bg;
+}
+
+div, header { box-sizing: border-box; }
+
+input, button { outline: none; }
+fieldset { border: none; padding: 0; margin: 0; }
+button { border: none; }
+
+h1,h2,h3,h4,h5,h6,p { margin: 0; }
+
+.page {
+  margin: 0 0 $footer-height $sidebar-width; transition: all $transition-delay;
+
+  &-inner { padding-bottom: 1rem; }
+
+  @media (max-width: $mobile) {
+    margin-left: 0;
+  }
+
+  &-container { position: relative; }
+}
+
+.main { position: relative; padding: 1rem; }
+
+.footer {
+  position: fixed; background-color: $footer-background-color; padding: 0.5rem; font-size: 0.8rem;
+  border-top: 1px solid $footer-border-color; left: 0; right: 0; bottom: 0; z-index: 10;
+}
+
+.mock {
+  &-page { height: 100%; display: flex; justify-content: center; align-items: center; }
+
+  &-label { text-align: center; }
+
+  &-container {
+    display: flex; justify-content: center; align-content: center; width: 100%; height: $mock-container-height;
+    flex-direction: column;
+  }
+}

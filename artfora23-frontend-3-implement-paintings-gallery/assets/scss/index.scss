@@ -1,0 +1,82 @@
+@import 'fonts';
+@import 'variables';
+@import 'layout';
+@import 'ui-kit/box';
+@import 'ui-kit/button';
+@import 'ui-kit/dropdown';
+@import 'ui-kit/form';
+@import 'ui-kit/grid';
+@import 'ui-kit/pagination';
+@import 'ui-kit/sidebar';
+@import 'ui-kit/table';
+@import 'ui-kit/modal';
+@import 'ui-kit/selector';
+@import 'ui-kit/checkbox';
+@import 'ui-kit/switch';
+@import 'ui-kit/search-filter';
+@import 'etc';
+@import 'components/header';
+@import 'components/profile-menu';
+@import 'components/search-bar';
+@import 'components/icon-button';
+@import 'components/gallery';
+@import 'components/categories';
+@import 'components/link';
+@import 'components/product';
+@import 'components/product-sidebar';
+@import 'components/add-product-modal';
+@import 'components/gallery-settings';
+@import 'components/set-up-account-modal';
+@import 'components/ai-safe-description';
+
+.search {
+  &-query { margin-bottom: 1rem; padding-bottom: 0; }
+
+  &-panel-item { padding: 1.5rem 0 0.5rem; }
+}
+
+.user {
+  &-image { display: block; margin: auto; height: 100%; width: auto;
+
+    &-container { height: $mock-container-height; }
+  }
+}
+
+.edit-page {
+  &-data { margin-bottom: 5rem;
+
+    & .box { margin-bottom: 1rem; }
+  }
+
+  &-button-panel { position: absolute; bottom: 0; left: 1rem; right: 1rem;
+
+    &-content { display: flex; flex-direction: row-reverse; align-items: center; }
+  }
+
+  &-button { margin: 0 1rem; width: 150px; }
+
+  &-message {
+    padding-top: 1rem;
+
+    &-success { color: $button-success-background-color; }
+
+    &-error { color: $error-color; }
+  }
+}
+
+.blog {
+  &-image {
+    height: 100%; width: auto; margin: 0 auto; display: block; max-width: 100%;
+
+    &-container { cursor: pointer; height: 20rem; width: 100%; display: block;}
+  }
+}
+
+// These are test switches
+.switch {
+  display: flex; flex-direction: row; justify-content: flex-start;
+
+  &-item {
+    text-decoration: underline; cursor: pointer; margin: 10px
+  }
+}

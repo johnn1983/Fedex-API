@@ -1,0 +1,112 @@
+stages:
+ - build
+ - deploy
+
+variables:
+
+ DOMAIN: dev.artfora.artel-workshop.com
+ short_branch: $short_branch
+ external_port: $external_port
+ CI_PROJECT_NAME: $CI_PROJECT_NAME
+ CI_COMMIT_SHORT_SHA: $CI_COMMIT_SHORT_SHA
+
+build:
+ stage: build
+ image: 
+   name: gcr.io/kaniko-project/executor:v1.9.0-debug
+   entrypoint: [""]
+
+  #disable cache
+ cache: []
+#  before_script:
+#    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+ before_script:
+   - mkdir -p /kaniko/.docker
+   - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    # - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+
+ script:
+   - echo $CI_COMMIT_REF_NAME
+   - cat $env > .env
+   - cat .env
+   - >
+     /kaniko/executor
+     --use-new-run=true
+     --cleanup
+     --cache=true
+     --cache-dir=/tmp
+     --snapshotMode=redo
+     --context "${CI_PROJECT_DIR}"
+     --dockerfile "${CI_PROJECT_DIR}/docker/Dockerfile"
+     --destination "${CI_REGISTRY_IMAGE}:${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}"
+
+#  script:
+#    - echo $CI_COMMIT_REF_NAME
+#    - cat $env > .env
+#    - cat .env
+#    - echo $short_branch
+#    - docker build . -t "${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}" --file docker/Dockerfile
+#
+ environment:
+   name: $CI_COMMIT_REF_NAME
+
+ only:
+   - staging
+   - development
+   - production
+ tags:
+   - docker-runner-artel
+
+
+deploy:
+ stage: deploy
+ image: 
+   name: kroniak/ssh-client
+ before_script:
+ ##for ini ssh
+   - eval $(ssh-agent -s)
+   - ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
+   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+   - echo "$ssh_priv_key" | tr -d '\r' | ssh-add -
+  #  - chmod 400 "$ssh_priv_key"
+  #  - ssh-add "$ssh_priv_key"
+   - chmod 700 -R /root/.ssh/
+   - cat /root/.ssh/id_rsa
+   - cat ${ssh_pub_key} > /root/.ssh/id_rsa.pub
+# local init docker-compose
+   - apk update && apk add bash
+   - apk update && apk add gettext docker docker-compose
+   - cat docker/docker-compose.dev.yml | envsubst > docker-compose.yml
+#remote commands
+   - ssh root@${host} "mkdir -p /home/${short_branch}/${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA}"
+   - ssh root@${host} "mkdir -p /home/${short_branch}/docker-composes"
+   - docker -H "ssh://root@${host}" login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+   - >
+     docker -H "ssh://root@${host}" volume create --opt type=none --opt device=/home/${short_branch}/${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA} ${short_branch}-${CI_PROJECT_NAME}-${CI_COMMIT_SHORT_SHA} --opt o=bind
+
+ script:
+ 
+   - cat docker-compose.yml
+   - scp docker-compose.yml root@${host}:/home/${short_branch}/docker-composes/
+   - docker-compose -H "ssh://root@${host}" up -d
+#    
+
+#    - docker-compose up -d
+#  after_script:
+#    - echo "--- clean old volumes ---"
+  #  - volume_list=$(docker volume ls | grep "${short_branch}-${CI_PROJECT_NAME}" | grep -v ${CI_COMMIT_SHORT_SHA} | awk '{print $2}') && for item in ${volume_list//\\n\ }; do docker volume rm $item; done
+  #  - >
+  #    dir_list=$(sudo ls /home/${short_branch}/ | grep "${short_branch}-${CI_PROJECT_NAME}" | grep -v "${CI_COMMIT_SHORT_SHA}" ) &&
+  #    for item in ${dir_list//\\n\ };
+  #    do sudo rm -rf "/home/${short_branch}/$item";
+  #    done
+   - echo "--- clean unused images ---"
+  #  - docker system prune -a -f
+ environment:
+   name: $CI_COMMIT_REF_NAME
+ only:
+   - staging
+   - development
+   - production
+ tags:
+   - docker-runner-artel

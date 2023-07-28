@@ -1,0 +1,14 @@
+@import '../variables';
+
+.profile-menu {
+  display: flex; justify-content: flex-end; align-items: center; position: relative; gap: 10px;
+  & .new-product {
+    display: flex; align-items: center; cursor: pointer;
+
+    & .plus-icon {
+      width: 19px; height: 19px; background: $border-color; padding: 4px; border-radius: 50%;
+      fill: $header-background-color;
+    }
+  }
+
+}

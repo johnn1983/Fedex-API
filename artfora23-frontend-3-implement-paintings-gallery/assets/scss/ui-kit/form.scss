@@ -1,0 +1,63 @@
+@import "../variables";
+
+.form {
+  &-group { margin-bottom: 1rem; position: relative; }
+
+  &-field {  }
+  &-prefix {
+    position: absolute; top: 0.8rem; left: .8rem; font-size: 1.2rem; color: $light-bg; opacity: 0;
+
+    &-filled { opacity: 1; }
+  }
+
+  &-control {
+    background: transparent; border: $input-border-color 1px solid; padding: .8rem .8rem .5rem .8rem; width: 100%;
+    box-sizing: border-box; font-size: 1rem; color: $light-bg; border-radius: 10px; font-family: AtkinsonHyperlegible, sans-serif;
+
+    &-prefix { padding: .8rem .8rem .5rem 1.7rem; }
+
+    &-filled ~ .form-label { transform: translate(0, -.6rem) scale(0.6); left: .8rem; }
+
+    &-textarea {
+      min-height: 100px; outline: none !important; font-family: AtkinsonHyperlegible, sans-serif;
+      &::placeholder {
+        opacity: 0.4;
+        color: $box-content-font-color;
+        font-family: AtkinsonHyperlegible, sans-serif;
+        font-style: italic;
+      }
+    }
+
+    &:disabled { opacity: 0.8; cursor: not-allowed; }
+  }
+
+  &-checkbox { margin: .3rem 0;
+    & input { margin-right: .5rem; }
+  }
+
+  &-label {
+    position: absolute; top: .85rem; left: .8rem; opacity: 0.4; pointer-events: none; transform: none; transform-origin: 0 0;
+    transition: all $transition-delay; font-style: italic;
+  }
+
+  &-errors-list, &-attentions-list { width: 100%; }
+  &-attention { font-style: italic; }
+  &-error, &-attention { color: $error-color; margin-top: .3rem; font-size: 14px; }
+
+  &-arrow { position: absolute; right: .5rem; top: 1.5rem; cursor: pointer; }
+
+  &-dropdown {
+    transition: max-height $transition-delay; position: absolute; top: 2rem; max-height: 0; background-color: white;
+    z-index: 11; right: 0; left: 0; overflow: auto; padding-left: 0; margin-top: .5rem;
+
+    &-item {
+      display: block; padding: .5rem; border-bottom: solid $box-border-color 1px; cursor: pointer; user-select: none;
+
+      &:hover {background-color: $selector-item-hover-color;}
+    }
+
+    &-opened {
+      max-height: 40rem; box-shadow: 0 .5rem 2rem -.75rem $selector-dropdown-shadow-color;
+    }
+  }
+}

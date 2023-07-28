@@ -1,0 +1,9 @@
+@import '../variables';
+
+.switch-checkbox { border: 2px solid $border-color; border-radius: 15px; display: flex; background: $light-bg;
+
+  &-label { display: block; padding: 5px 10px; border-radius: 15px; cursor: pointer; }
+
+  &-active { background: $body-bg; color: white; }
+}
+

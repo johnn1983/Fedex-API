@@ -1,0 +1,18 @@
+@import '../variables';
+
+.pagination {
+  display: flex; flex-direction: row; justify-content: center; align-items: center; list-style: none; font-size: 0.8rem;
+
+  & .page-item:first-child .page-link { margin-left: 0; border-top-left-radius: .2rem; border-bottom-left-radius: .2rem; }
+
+  & .page-item:last-child .page-link { margin-left: 0; border-top-right-radius: .2rem; border-bottom-right-radius: .2rem; }
+
+  & .page-link {
+    background-color: $pagination-background-color; border: 1px solid $pagination-border-color; color: inherit;
+    float: left; margin-left: -1px; padding: 4px 10px; position: relative; text-decoration: none;
+  }
+
+  & .page-item.active .page-link {
+    background-color: $pagination-active-link-background-color; color: $pagination-active-link-font-color;
+  }
+}

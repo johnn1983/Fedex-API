@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  frontend:
+    image: node:18
+    build: .
+    container_name: artfora-frontend
+    command: bash -c 'npm i --legacy-peer-deps && /etc/init.d/nginx start && npm run dev'
+    volumes:
+      - ./:/app/
+      - ./docker/local/nginx:/etc/nginx/sites-available
+    ports:
+      - 3000:3000
+      - 24678:24678
+    networks:
+      - artfora
+
+networks:
+  artfora:
+    external: true

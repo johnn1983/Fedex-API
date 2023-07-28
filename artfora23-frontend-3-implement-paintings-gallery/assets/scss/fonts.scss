@@ -1,0 +1,55 @@
+@font-face {
+  font-family: Prozak;
+  font-style: normal;
+  font-weight: 300;
+  src: url(/assets/fonts/Prozak_light.ttf) format('truetype');
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: Prozak;
+  font-style: normal;
+  font-weight: 500;
+  src: url(/assets/fonts/Prozak_.ttf) format('truetype');
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: Prozak;
+  font-style: normal;
+  font-weight: 700;
+  src: url(/assets/fonts/Prozak_bold.ttf) format('truetype');
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: AtkinsonHyperlegible;
+  font-style: normal;
+  font-weight: 500;
+  src: url(/assets/fonts/AtkinsonHyperlegible-Regular.ttf) format('truetype');
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: AtkinsonHyperlegible;
+  font-style: italic;
+  font-weight: 500;
+  src: url(/assets/fonts/AtkinsonHyperlegible-Italic.ttf) format('truetype');
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: AtkinsonHyperlegible;
+  font-style: normal;
+  font-weight: 700;
+  src: url(/assets/fonts/AtkinsonHyperlegible-Bold.ttf) format('truetype');
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: AtkinsonHyperlegible;
+  font-style: italic;
+  font-weight: 700;
+  src: url(/assets/fonts/AtkinsonHyperlegible-BoldItalic.ttf) format('truetype');
+  unicode-range: U+0-10FFFF;
+}

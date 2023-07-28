@@ -1,0 +1,17 @@
+@import '../variables';
+
+.gallery-settings {
+
+  &-item { display: flex; justify-content: space-between; align-items: center;
+
+    &-title { font-weight: normal; font-size: 27px; letter-spacing: 1px; font-family: Prozak; }
+
+    &-view { cursor: pointer; fill: $border-color;
+
+      &-active { fill: white; }
+    }
+  }
+
+
+  &-middle-divider { width: 100%; height: 1px; border-bottom: 1px solid $border-color; margin-top: 100px; margin-bottom: 20px; }
+}

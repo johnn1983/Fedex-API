@@ -1,0 +1,103 @@
+@import '../variables';
+
+.row { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+
+.col { padding: 0 10px; box-sizing: border-box;
+  &-10 {width: 10%;}
+  &-12 {width: 12.5%;}
+  &-15 {width: 15%;}
+  &-16 {width: 16.66%;}
+  &-20 {width: 20%;}
+  &-25 {width: 25%;}
+  &-30 {width: 30%;}
+  &-33 {width: 33.33%;}
+  &-40 {width: 40%;}
+  &-50 {width: 50%;}
+  &-60 {width: 60%;}
+  &-66 {width: 66.66%;}
+  &-70 {width: 70%;}
+  &-75 {width: 75%;}
+  &-80 {width: 80%;}
+  &-90 {width: 90%;}
+  &-100 {width: 100%;}
+
+  @media(max-width: $large) {
+    &-large-hidden {display: none;}
+    &-large-10 {width: 10%;}
+    &-large-15 {width: 15%;}
+    &-large-16 {width: 16.66%;}
+    &-large-20 {width: 20%;}
+    &-large-25 {width: 25%;}
+    &-large-30 {width: 30%;}
+    &-large-33 {width: 33.33%;}
+    &-large-40 {width: 40%;}
+    &-large-50 {width: 50%;}
+    &-large-60 {width: 60%;}
+    &-large-66 {width: 66.66%;}
+    &-large-70 {width: 70%;}
+    &-large-75 {width: 75%;}
+    &-large-80 {width: 80%;}
+    &-large-90 {width: 90%;}
+    &-large-100 {width: 100%;}
+  }
+
+  @media(max-width: $laptop) {
+    &-laptop-hidden {display: none;}
+    &-laptop-10 {width: 10%;}
+    &-laptop-15 {width: 15%;}
+    &-laptop-16 {width: 16.66%;}
+    &-laptop-20 {width: 20%;}
+    &-laptop-25 {width: 25%;}
+    &-laptop-30 {width: 30%;}
+    &-laptop-33 {width: 33.33%;}
+    &-laptop-40 {width: 40%;}
+    &-laptop-50 {width: 50%;}
+    &-laptop-60 {width: 60%;}
+    &-laptop-66 {width: 66.66%;}
+    &-laptop-70 {width: 70%;}
+    &-laptop-75 {width: 75%;}
+    &-laptop-80 {width: 80%;}
+    &-laptop-90 {width: 90%;}
+    &-laptop-100 {width: 100%;}
+  }
+
+  @media(max-width: $tablet) {
+    &-tab-hidden {display: none;}
+    &-tab-10 {width: 10%;}
+    &-tab-15 {width: 15%;}
+    &-tab-16 {width: 16.66%;}
+    &-tab-20 {width: 20%;}
+    &-tab-25 {width: 25%;}
+    &-tab-30 {width: 30%;}
+    &-tab-33 {width: 33.33%;}
+    &-tab-40 {width: 40%;}
+    &-tab-50 {width: 50%;}
+    &-tab-60 {width: 60%;}
+    &-tab-66 {width: 66.66%;}
+    &-tab-70 {width: 70%;}
+    &-tab-75 {width: 75%;}
+    &-tab-80 {width: 80%;}
+    &-tab-90 {width: 90%;}
+    &-tab-100 {width: 100%;}
+  }
+
+  @media(max-width: $mobile) {
+    &-mobile-hidden {display: none;}
+    &-mobile-10 {width: 10%;}
+    &-mobile-15 {width: 15%;}
+    &-mobile-16 {width: 16.66%;}
+    &-mobile-20 {width: 20%;}
+    &-mobile-25 {width: 25%;}
+    &-mobile-30 {width: 30%;}
+    &-mobile-33 {width: 33.33%;}
+    &-mobile-40 {width: 40%;}
+    &-mobile-50 {width: 50%;}
+    &-mobile-60 {width: 60%;}
+    &-mobile-66 {width: 66.66%;}
+    &-mobile-70 {width: 70%;}
+    &-mobile-75 {width: 75%;}
+    &-mobile-80 {width: 80%;}
+    &-mobile-90 {width: 90%;}
+    &-mobile-100 {width: 100%;}
+  }
+}

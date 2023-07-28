@@ -1,0 +1,26 @@
+@import '../variables';
+
+.input-checkbox { display: flex; align-items: center; gap: 5px; font-size: 14px;
+
+  & input { display: none;
+
+    &:checked + .input-checkbox-box {
+
+      &:after { display: block; }
+    }
+
+    &[type='radio'] + .input-checkbox-box {
+      &:after { width: 9px; height: 9px; content: ''; position: absolute; left: 1px; bottom: 1px;
+        background-color: #fff; border-radius: 3px; transform: none; border: none;
+      }
+    }
+  }
+
+  &-box { width: 15px; height: 15px; border: 2px solid transparent; border-radius: 5px;
+    background-color: $border-color; cursor: pointer; position: relative;
+
+    &:after { display: none; width: 4px; height: 9px; content: ''; position: absolute; left: 2px; bottom: 1px; border-top: 2px solid transparent;
+      border-left: 2px solid transparent; border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(37deg);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import '../variables';
+.ui-kit-selector {
+  position: relative; width: 100%; border: 1px solid $border-color; border-radius: 10px;
+  display: flex; justify-content: space-between; align-items: center; padding: 5px 10px; margin: 10px auto;
+
+  &-title {
+
+    &-filled { display: none; }
+  }
+
+  &-dropdown {
+    position: absolute; width: 100%; display: flex; flex-direction: column; top: 100%; left: -1px ; border: 1px solid $border-color;
+    margin: 0; list-style-type: none; padding: 0; background: $header-background-color; border-radius: 10px; overflow: hidden; z-index: 10;
+    max-height: 200px; overflow: auto;
+
+    &-item {
+      cursor: pointer; padding: 5px 10px;
+
+      &:hover { background: $selector-dropdown-shadow-color}
+    }
+  }
+
+  &-search {
+    width: 100%;
+
+    &-input {
+      background: transparent; border: none; font-size: 16px; color: $box-content-font-color; width: 100%;
+    }
+  }
+
+  &-arrow {
+    transform: rotate(90deg); fill: $border-color;
+
+    &-open { transform: rotate(270deg) }
+  }
+}
